@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres@123
+    url: jdbc:postgresql://localhost:5432/clinique1_db
+    platform: postgres
+    initialization-mode: always
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+    database: postgresql
+server:
+  port: 8081
+
+#flickr:
+#  apiKey: cffefaa99a2f4be8daafe309c3b3b17e
+#  apiSecret: d9d537a16d36592c
+#  appKey: 72157720905624669-95f39e77360286d9
+#  appSecret: f3ef0e92e8d63feb

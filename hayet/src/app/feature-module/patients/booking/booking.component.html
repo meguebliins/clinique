@@ -1,0 +1,181 @@
+<!-- Page Content -->
+<div class="content">
+    <div class="container">
+    
+        <div class="row">
+            <div class="col-12">
+            
+                <div class="card">
+                    <div class="card-body">
+                        <div class="booking-doc-info" *ngIf="doctorDetails">
+                            <a [routerLink]="'/patients/doctor-profile'" class="booking-doc-img">
+                                <!-- <img src={{doctorDetails.profile}} alt="User Image"> -->
+                            </a>
+                            <div class="booking-info">
+                                <h4><a [routerLink]="'/patients/doctor-profile'">{{doctorDetails.doctor_name}}</a></h4>
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="d-inline-block average-rating">35</span>
+                                </div>
+                                <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> {{doctorDetails.location}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-4 col-md-6">
+                        <h4 class="mb-1">{{now.dd}}</h4>
+                        <p class="text-muted">{{now.d}}</p>
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-6 text-sm-end">
+                        <div  class="bookingrange btn btn-white btn-sm mb-3">
+                            <i class="far fa-calendar-alt me-2"></i>
+                            <span></span>
+                            <i class="fas fa-chevron-down ms-2"></i>
+                        </div>
+                    </div>
+                
+                    
+                </div>
+                
+                <!-- Schedule Widget -->
+                <div class="card booking-schedule schedule-widget">
+                
+                    <!-- Schedule Header -->
+                    
+                    <div class="schedule-header">
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                                <!-- Day Slot -->
+                                <div class="day-slot">
+                                    <ul>
+                                        <li class="left-arrow">
+                                            <a >
+                                                <i class="fa fa-chevron-left"></i>
+                                            </a>
+                                        </li>
+                                        
+                                        <div *ngFor="let el of alldata.date; let i=index" >
+                                           
+                                            <li >
+                                                <span >{{el | date : 'ccc' }}</span>
+                                                <span class="slot-date">{{el}}</span>
+                                                <!-- <span class="slot-date">{{el.time}}</span> -->
+                                            
+                                                <!-- <div  class="time-slot" *ngFor="let e of alldata.time" >
+                                                 
+                                                      <a class="timing ">
+                                                          <span >{{e}}</span> <span>AM</span>
+                                                      </a>
+                                                      
+                                                  
+          
+                                              </div> -->
+                                          </li>
+                                            <!-- <li>
+                                                <a class="timing ">
+                                                    <span (click)=createRdv(0,0)>{{el.time}}</span> <span>AM</span>
+                                                </a>
+                                            </li> -->
+                                            
+                                       
+                                     
+                                        </div>
+                            
+                                        <li class="right-arrow">
+                                            <a >
+                                                <i class="fa fa-chevron-right"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                               
+                                <!-- /Day Slot -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Schedule Header -->
+                    
+                    <!-- Schedule Content -->
+                    <div class="schedule-cont">
+                        <div class="row">
+                            <div class="col-md-12">
+                            
+                                <!-- Time Slot -->
+                                <div class="time-slot">
+                                    <ul>
+                                     
+                                        <div *ngFor="let el of alldata.date; let i=index" >
+                                      <li>
+                                      <div *ngFor="let e of alldata.time">
+                                       
+                                            <a class="timing" (click)=createRdv(el,e) [ngClass]="{'gris' : Rdv.status === stat[0] , 'red' : Rdv.status === stat[1]}" >
+                                                <span >{{e}}</span> <span>AM</span>
+                                            </a>
+                                            <br>
+                                        
+
+                                    </div>
+                                    <!-- <a class="timing "(click)=createRdv(el,12) [ngClass]="{'gris' : Rdv.status,
+                                     'red': !Rdv.status}">
+                                        <span >12:00</span> <span>AM</span>
+                                    </a> -->
+                                 </li>
+                                        </div>
+                                      <!-- <li >
+                                        <div *ngFor="let element of all ;let i=index">
+                                         <div>-->
+                                            <!-- <a class="timing ">
+                                                <span >15:00</span> <span>AM</span>
+                                            </a> -->
+                                       <!--
+                                            <a class="timing">
+                                                <span (click)=createRdv(1,0)>{{element[1]}}</span> <span>AM</span>
+                                            </a>
+                                            <a class="timing">
+                                                <span (click)=createRdv(2,0)>{{element[2]}}</span> <span>AM</span>
+                                            </a>
+                                            <a class="timing">
+                                                <span (click)=createRdv(3,0)>{{element[3]}}</span> <span>AM</span>
+                                            </a>
+                                            <a class="timing">
+                                                <span (click)=createRdv(4,0)>{{element[4]}}</span> <span>AM</span>
+                                            </a>
+                                            <a class="timing">
+                                                <span (click)=createRdv(5,0)>{{element[5]}}</span> <span>AM</span>
+                                            </a>
+                                        </div>
+                                        </div>
+                                    </li>
+                                   
+                                   
+                                    </li> -->
+                                    </ul>
+                                </div>
+                                <!-- /Time Slot -->
+                            </div>
+                                
+                            </div>
+                        </div>
+                   
+                    <!-- /Schedule Content -->
+                </div>
+                <!-- /Schedule Widget -->
+                
+                <!-- Submit Section -->
+                <div class="submit-section proceed-btn text-end">
+                    <a [routerLink]="'/patients/checkout'" [queryParams]="{id: doctorDetails?.id}" class="btn btn-primary submit-btn">Valider </a>
+                </div>
+                <!-- /Submit Section -->
+                
+            </div>
+        </div>
+    </div>
+
+</div>		
+<!-- /Page Content -->
